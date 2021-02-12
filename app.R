@@ -1,15 +1,16 @@
 
 library(shiny)
-library(leaflet)
-library(spData)
-library(dplyr)
+library(shinydashboard)
 
 # Define UI ----
 ui <- fluidPage(
-  titlePanel("Gobierno Digital"),
+  headerPanel(
+  titlePanel("Gobierno Digital: Mejorando el transporte en Panamá")
+  ),
+ 
   sidebarLayout(
     sidebarPanel(
-      img(src = "/mibus.png", height = 140, width = 200),
+      img(src = "/mibus.png", height = 140, width = 160),
       
       h2("Objetivo General"),
       helpText("Desarrollar un modelo de monitoreo vehicular inteligente en tiempo real para mejorar la distribución y logística del transporte panameño."),
@@ -31,15 +32,30 @@ ui <- fluidPage(
     ),
     mainPanel(
       h1("Tráfico actual "),
-      img(src = "/panamaCentro.png", height = 500, width = 900),
       fluidRow(
-        column(2, "Hola"),
-        column(4, 'Hey')
+        column(5, h3("Número de vehículos actuales:"), 
+                     h2("150 vehículos")),
+        column(5, h3("Velocidad media de vehículos actuales:"), 
+                     h2("45 km/h "))
+      ),
+      img(src = "/panamaCentro.png", height = 500, width = 1000),
+      fluidRow(
+        column(4, img(src = "/barChart.png", height = 400, width = 600)),
+        column(4, img(src = "/lineChart.png", height = 400, width = 550))
         ),
       strong("Desarrollado por el grupo Gobierno Digital conformado por: Prof: Juan Saldaña, Prof: Víctor López, Valerie Tuñón, Anel Atencio, Fernando Cutire")
     )
   )
 )
+
+uiShiny <- dashboardPage(
+  dashboardHeader(),
+  
+  dashboardSidebar(),
+  
+  dashboardBody()
+
+  )
 
 
 # Define lógica del servidor ----
